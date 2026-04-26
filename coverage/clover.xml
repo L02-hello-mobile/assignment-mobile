@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1777210942580" clover="3.2.0">
-  <project timestamp="1777210942580" name="All files">
-    <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0" elements="13" coveredelements="0" complexity="0" loc="9" ncloc="9" packages="1" files="2" classes="2"/>
-    <file name="HomeScreen.tsx" path="C:\Users\PC\Desktop\btl mobile\assignment-mobile\screens\HomeScreen.tsx">
-      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
-      <line num="105" count="0" type="stmt"/>
+<coverage generated="1777213910854" clover="3.2.0">
+  <project timestamp="1777213910854" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5" elements="20" coveredelements="20" complexity="0" loc="15" ncloc="15" packages="1" files="2" classes="2"/>
+    <file name="HomeScreen.tsx" path="D:\assignment-mobile\screens\HomeScreen.tsx">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="13" count="4" type="stmt"/>
+      <line num="14" count="4" type="stmt"/>
+      <line num="15" count="4" type="stmt"/>
+      <line num="16" count="4" type="stmt"/>
+      <line num="17" count="4" type="stmt"/>
+      <line num="18" count="4" type="stmt"/>
+      <line num="60" count="4" type="stmt"/>
+      <line num="62" count="4" type="stmt"/>
+      <line num="89" count="1" type="stmt"/>
+      <line num="183" count="1" type="stmt"/>
     </file>
-    <file name="OnboardingScreen.tsx" path="C:\Users\PC\Desktop\btl mobile\assignment-mobile\screens\OnboardingScreen.tsx">
-      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <line num="5" count="0" type="stmt"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="47" count="0" type="stmt"/>
-      <line num="62" count="0" type="stmt"/>
+    <file name="OnboardingScreen.tsx" path="D:\assignment-mobile\screens\OnboardingScreen.tsx">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="5" count="5" type="stmt"/>
+      <line num="6" count="5" type="stmt"/>
+      <line num="8" count="5" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="62" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -1,21 +1,77 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import Svg, { Circle } from "react-native-svg";
+
+function CircularProgress({ percent }: { percent: number }) {
+  const size = 90;
+  const strokeWidth = 8;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const filled = (percent / 100) * circumference;
+  return (
+    <View
+      style={{
+        width: size,
+        height: size,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Svg
+        width={size}
+        height={size}
+        style={{ position: "absolute", transform: [{ rotate: "-90deg" }] }}
+      >
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="rgba(255,255,255,0.3)"
+          strokeWidth={strokeWidth}
+          fill="none"
+        />
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="#FFFFFF"
+          strokeWidth={strokeWidth}
+          fill="none"
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference - filled}
+          strokeLinecap="round"
+        />
+      </Svg>
+      <Text style={{ color: "#FFF", fontWeight: "bold", fontSize: 16 }}>
+        {percent}%
+      </Text>
+    </View>
+  );
+}
 
 export default function HomeScreen() {
-  const [taskState, setTaskState] = useState('Xem nhiệm vụ');
+  const [taskState, setTaskState] = useState("Xem nhiệm vụ");
 
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollArea}>
-        
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollArea}
+      >
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.userInfo}>
             <View style={styles.avatar} />
             <View>
-                <Text style={styles.helloText}>Hello!</Text>
-                <Text style={styles.nameText}>Hello Mobile</Text>
+              <Text style={styles.helloText}>Hello!</Text>
+              <Text style={styles.nameText}>Hello Mobile</Text>
             </View>
           </View>
           <Ionicons name="notifications" size={26} color="#1F2937" />
@@ -23,78 +79,100 @@ export default function HomeScreen() {
 
         {/* Banner Tím */}
         <View style={styles.banner}>
-          <View style={{flex: 1}}>
-            <Text style={styles.bannerTitle}>Nhiệm vụ của bạn sắp hoàn thành!</Text>
-            <TouchableOpacity 
+          <View style={{ flex: 1 }}>
+            <Text style={styles.bannerTitle}>
+              Nhiệm vụ của bạn sắp hoàn thành!
+            </Text>
+            <TouchableOpacity
               testID="btn-action"
-              style={styles.bannerBtn} 
-              onPress={() => setTaskState('Đang tải...')}
+              style={styles.bannerBtn}
+              onPress={() => setTaskState("Đang tải...")}
             >
               <Text style={styles.bannerBtnText}>{taskState}</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.progressRing}>
-             <View style={styles.innerCircle}>
-                <Text style={styles.progressVal}>85%</Text>
-             </View>
-          </View>
+          <CircularProgress percent={85} />
         </View>
 
         {/* Đang diễn ra */}
         <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Đang diễn ra</Text>
-            <View style={styles.badge}><Text style={styles.badgeText}>6</Text></View>
+          <Text style={styles.sectionTitle}>Đang diễn ra</Text>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>6</Text>
+          </View>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.hList}>
-            <View style={styles.cardH}>
-                <Text style={styles.tag}>Job fair</Text>
-                <Text style={styles.cardHTitle}>Hỗ trợ gian hàng số 14</Text>
-                <View style={styles.pBar}><View style={[styles.pFill, {width: '60%'}]} /></View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.hList}
+        >
+          <View style={styles.cardH}>
+            <Text style={styles.tag}>Job fair</Text>
+            <Text style={styles.cardHTitle}>Hỗ trợ gian hàng số 14</Text>
+            <View style={styles.pBar}>
+              <View style={[styles.pFill, { width: "60%" }]} />
             </View>
-            <View style={[styles.cardH, {backgroundColor: '#FFEDD5'}]}>
-                <Text style={styles.tag}>Câu lạc bộ âm nhạc</Text>
-                <Text style={styles.cardHTitle}>Sound check</Text>
-                <View style={styles.pBar}><View style={[styles.pFill, {width: '30%', backgroundColor: '#F97316'}]} /></View>
+          </View>
+          <View style={[styles.cardH, { backgroundColor: "#FFEDD5" }]}>
+            <Text style={styles.tag}>Câu lạc bộ âm nhạc</Text>
+            <Text style={styles.cardHTitle}>Sound check</Text>
+            <View style={styles.pBar}>
+              <View
+                style={[
+                  styles.pFill,
+                  { width: "30%", backgroundColor: "#F97316" },
+                ]}
+              />
             </View>
+          </View>
         </ScrollView>
 
         {/* Sự kiện */}
         <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Sự kiện</Text>
-            <View style={styles.badge}><Text style={styles.badgeText}>4</Text></View>
+          <Text style={styles.sectionTitle}>Sự kiện</Text>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>4</Text>
+          </View>
         </View>
         <View style={styles.eventItem}>
-            <View style={[styles.iconBox, {backgroundColor: '#FCE7F3'}]}><Ionicons name="briefcase" size={20} color="#DB2777" /></View>
-            <View style={{flex: 1, marginLeft: 15}}>
-                <Text style={styles.eventTitle}>Job fair</Text>
-                <Text style={styles.eventSub}>23 Tasks</Text>
-            </View>
-            <Text style={styles.eventPercent}>70%</Text>
+          <View style={[styles.iconBox, { backgroundColor: "#FCE7F3" }]}>
+            <Ionicons name="briefcase" size={20} color="#DB2777" />
+          </View>
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.eventTitle}>Job fair</Text>
+            <Text style={styles.eventSub}>23 Tasks</Text>
+          </View>
+          <Text style={styles.eventPercent}>70%</Text>
         </View>
         <View style={styles.eventItem}>
-            <View style={[styles.iconBox, {backgroundColor: '#E0E7FF'}]}><Ionicons name="person" size={20} color="#4F46E5" /></View>
-            <View style={{flex: 1, marginLeft: 15}}>
-                <Text style={styles.eventTitle}>Câu lạc bộ âm nhạc</Text>
-                <Text style={styles.eventSub}>30 Tasks</Text>
-            </View>
-            <Text style={styles.eventPercent}>52%</Text>
+          <View style={[styles.iconBox, { backgroundColor: "#E0E7FF" }]}>
+            <Ionicons name="person" size={20} color="#4F46E5" />
+          </View>
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.eventTitle}>Câu lạc bộ âm nhạc</Text>
+            <Text style={styles.eventSub}>30 Tasks</Text>
+          </View>
+          <Text style={styles.eventPercent}>52%</Text>
         </View>
         <View style={styles.eventItem}>
-            <View style={[styles.iconBox, {backgroundColor: '#FFEDD5'}]}><Ionicons name="book" size={20} color="#F97316" /></View>
-            <View style={{flex: 1, marginLeft: 15}}>
-                <Text style={styles.eventTitle}>Team building</Text>
-                <Text style={styles.eventSub}>30 Tasks</Text>
-            </View>
-            <Text style={styles.eventPercent}>87%</Text>
+          <View style={[styles.iconBox, { backgroundColor: "#FFEDD5" }]}>
+            <Ionicons name="book" size={20} color="#F97316" />
+          </View>
+          <View style={{ flex: 1, marginLeft: 15 }}>
+            <Text style={styles.eventTitle}>Team building</Text>
+            <Text style={styles.eventSub}>30 Tasks</Text>
+          </View>
+          <Text style={styles.eventPercent}>87%</Text>
         </View>
-
       </ScrollView>
 
       {/* Thanh Menu Dưới */}
       <View style={styles.bottomTab}>
         <Ionicons name="home" size={24} color="#6366F1" />
         <Ionicons name="calendar" size={24} color="#9CA3AF" />
-        <View style={styles.fab}><Ionicons name="add" size={30} color="#FFF" /></View>
+        <View style={styles.fab}>
+          <Ionicons name="add" size={30} color="#FFF" />
+        </View>
         <Ionicons name="document-text" size={24} color="#9CA3AF" />
         <Ionicons name="people" size={24} color="#9CA3AF" />
       </View>
@@ -103,35 +181,153 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FAFAFF', paddingTop: 40 },
+  container: { flex: 1, backgroundColor: "#FAFAFF", paddingTop: 40 },
   scrollArea: { padding: 25, paddingBottom: 120 },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 30 },
-  userInfo: { flexDirection: 'row', alignItems: 'center' },
-  avatar: { width: 50, height: 50, borderRadius: 25, backgroundColor: '#0EA5E9', marginRight: 15 },
-  helloText: { color: '#6B7280', fontSize: 14 },
-  nameText: { fontSize: 20, fontWeight: 'bold', color: '#1F2937' },
-  banner: { backgroundColor: '#4F46E5', borderRadius: 30, padding: 25, flexDirection: 'row', alignItems: 'center', marginBottom: 35 },
-  bannerTitle: { color: '#FFF', fontSize: 17, fontWeight: '600', marginBottom: 15, lineHeight: 22 },
-  bannerBtn: { backgroundColor: '#FFF', paddingVertical: 10, paddingHorizontal: 18, borderRadius: 15, alignSelf: 'flex-start' },
-  bannerBtnText: { color: '#4F46E5', fontWeight: 'bold' },
-  progressRing: { width: 80, height: 80, borderRadius: 40, borderWidth: 5, borderColor: '#818CF8', justifyContent: 'center', alignItems: 'center' },
-  innerCircle: { width: 65, height: 65, borderRadius: 32.5, borderLeftWidth: 5, borderColor: '#FFF', justifyContent: 'center', alignItems: 'center', transform: [{rotate: '45deg'}] },
-  progressVal: { color: '#FFF', fontWeight: 'bold', fontSize: 16, transform: [{rotate: '-45deg'}] },
-  sectionHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15 },
-  sectionTitle: { fontSize: 22, fontWeight: 'bold', color: '#111827' },
-  badge: { backgroundColor: '#F3F4F6', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 2, marginLeft: 10 },
-  badgeText: { color: '#8B5CF6', fontWeight: 'bold', fontSize: 12 },
-  hList: { overflow: 'visible', marginBottom: 35 },
-  cardH: { width: 240, backgroundColor: '#EEF2FF', borderRadius: 25, padding: 20, marginRight: 15 },
-  tag: { color: '#6B7280', fontSize: 12, marginBottom: 8 },
-  cardHTitle: { fontSize: 17, fontWeight: 'bold', color: '#1F2937', marginBottom: 25 },
-  pBar: { height: 6, backgroundColor: '#E5E7EB', borderRadius: 3 },
-  pFill: { height: '100%', backgroundColor: '#3B82F6', borderRadius: 3 },
-  eventItem: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFF', padding: 18, borderRadius: 20, marginBottom: 15, shadowColor: '#000', shadowOpacity: 0.02, elevation: 1 },
-  iconBox: { width: 45, height: 45, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
-  eventTitle: { fontWeight: 'bold', fontSize: 16, color: '#1F2937' },
-  eventSub: { color: '#9CA3AF', fontSize: 13 },
-  eventPercent: { fontWeight: 'bold', color: '#1F2937', borderWidth: 1, borderColor: '#E5E7EB', padding: 8, borderRadius: 12 },
-  bottomTab: { position: 'absolute', bottom: 0, width: '100%', height: 85, backgroundColor: '#FFF', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', paddingBottom: 20, borderTopLeftRadius: 30, borderTopRightRadius: 30, elevation: 10 },
-  fab: { width: 60, height: 60, borderRadius: 30, backgroundColor: '#6366F1', marginTop: -50, justifyContent: 'center', alignItems: 'center', elevation: 5 }
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  userInfo: { flexDirection: "row", alignItems: "center" },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#0EA5E9",
+    marginRight: 15,
+  },
+  helloText: { color: "#6B7280", fontSize: 14 },
+  nameText: { fontSize: 20, fontWeight: "bold", color: "#1F2937" },
+  banner: {
+    backgroundColor: "#4F46E5",
+    borderRadius: 30,
+    padding: 25,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 35,
+  },
+  bannerTitle: {
+    color: "#FFF",
+    fontSize: 17,
+    fontWeight: "600",
+    marginBottom: 15,
+    lineHeight: 22,
+  },
+  bannerBtn: {
+    backgroundColor: "#FFF",
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    borderRadius: 15,
+    alignSelf: "flex-start",
+  },
+  bannerBtnText: { color: "#4F46E5", fontWeight: "bold" },
+  progressRing: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 5,
+    borderColor: "#818CF8",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerCircle: {
+    width: 65,
+    height: 65,
+    borderRadius: 32.5,
+    borderLeftWidth: 5,
+    borderColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    transform: [{ rotate: "45deg" }],
+  },
+  progressVal: {
+    color: "#FFF",
+    fontWeight: "bold",
+    fontSize: 16,
+    transform: [{ rotate: "-45deg" }],
+  },
+  sectionHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  sectionTitle: { fontSize: 22, fontWeight: "bold", color: "#111827" },
+  badge: {
+    backgroundColor: "#F3F4F6",
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    marginLeft: 10,
+  },
+  badgeText: { color: "#8B5CF6", fontWeight: "bold", fontSize: 12 },
+  hList: { overflow: "visible", marginBottom: 35 },
+  cardH: {
+    width: 240,
+    backgroundColor: "#EEF2FF",
+    borderRadius: 25,
+    padding: 20,
+    marginRight: 15,
+  },
+  tag: { color: "#6B7280", fontSize: 12, marginBottom: 8 },
+  cardHTitle: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#1F2937",
+    marginBottom: 25,
+  },
+  pBar: { height: 6, backgroundColor: "#E5E7EB", borderRadius: 3 },
+  pFill: { height: "100%", backgroundColor: "#3B82F6", borderRadius: 3 },
+  eventItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF",
+    padding: 18,
+    borderRadius: 20,
+    marginBottom: 15,
+    shadowColor: "#000",
+    shadowOpacity: 0.02,
+    elevation: 1,
+  },
+  iconBox: {
+    width: 45,
+    height: 45,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  eventTitle: { fontWeight: "bold", fontSize: 16, color: "#1F2937" },
+  eventSub: { color: "#9CA3AF", fontSize: 13 },
+  eventPercent: {
+    fontWeight: "bold",
+    color: "#1F2937",
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+    padding: 8,
+    borderRadius: 12,
+  },
+  bottomTab: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    height: 85,
+    backgroundColor: "#FFF",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    paddingBottom: 20,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    elevation: 10,
+  },
+  fab: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#6366F1",
+    marginTop: -50,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+  },
 });
