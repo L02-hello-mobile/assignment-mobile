@@ -1,33 +1,37 @@
 name: Test & Sonar Scan
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - [cite_start]w8-sonar  # Kích hoạt khi push lên nhánh w8-sonar [cite: 342]
+  pull_request:
+    branches:
+      - main
+      - w8-sonar
 
 jobs:
   test-and-scan:
     runs-on: ubuntu-latest
     steps:
-      # 1. Lấy code về (bắt buộc fetch-depth: 0 để Sonar phân tích lịch sử Git)
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          [cite_start]fetch-depth: 0 # Quan trọng cho SonarCloud [cite: 329]
 
-      # 2. Cài đặt môi trường Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          [cite_start]node-version: 18 [cite: 355]
 
-      # 3. Cài đặt thư viện
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+        [cite_start]run: npm install --legacy-peer-deps [cite: 356]
 
-      # 4. Chạy Test và sinh ra file coverage (Thư mục coverage/lcov.info)
       - name: Run Tests with Coverage
+        # Lệnh này sinh ra file coverage/lcov.info để Sonar đọc [cite: 373, 396]
         run: npm run test
 
-      # 5. Gửi báo cáo lên SonarCloud
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
