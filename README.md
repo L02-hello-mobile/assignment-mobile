@@ -1,24 +1,68 @@
-﻿# Assignment Mobile
+﻿# Welcome to Assignment Mobile - Hello Mobile
 
-[![Test & Sonar Scan](https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml/badge.svg)](https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=coverage)](https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile)
+<p align="left">
+  <a href="https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml">
+    <img src="https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml/badge.svg" alt="CI Status">
+  </a>
+  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=alert_status" alt="Quality Gate Status">
+  </a>
+  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=coverage" alt="Coverage">
+  </a>
+  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=bugs" alt="Bugs">
+  </a>
+  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=vulnerabilities" alt="Vulnerabilities">
+  </a>
+</p>
 
-React Native + Expo. Gồm 2 màn hình: đăng nhập và home.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-npm run web # localhost
-npx expo start # mobile — scan QR bằng Expo Go
+## Get started
 
-## Tests
+1. Install dependencies
 
-**OnboardingScreen** (`__tests__/OnboardingScreen.test.tsx`)
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-- render đúng tiêu đề
-- nhập email + password
-- bấm đăng nhập → navigate sang Home
+2. Start the app
 
-**HomeScreen** (`__tests__/HomeScreen.test.tsx`)
+   ```bash
+   npx expo start
+   ```
 
-- render không crash
-- hiển thị tên user và banner 85%
-- bấm nút → đổi text
+In the output, you will find options to open the app in a
+
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Web browser via `npm run web`
+
+## Testing
+
+This project uses **Jest** and **React Native Testing Library** for testing.
+
+### Run tests locally
+
+- **Run all tests:**
+
+  ```bash
+  npm test
+  ```
+
+- **Run tests with coverage report:**
+
+  ```bash
+  npm test
+  ```
+
+  After running, view the detailed HTML report at:
+  `coverage/lcov-report/index.html`
+
+- **Watch mode:**
+  ```bash
+  npx jest --watch
+  ```
