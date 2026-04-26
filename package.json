@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "expo": "~54.0.33",
+    "expo-asset": "^55.0.16",
+    "expo-font": "^55.0.6",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
     "react-native": "0.81.5"
@@ -20,9 +22,10 @@
     "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^30.0.0",
     "@types/react": "~19.1.0",
+    "babel-preset-expo": "^55.0.18",
     "jest": "^30.3.0",
     "jest-expo": "^55.0.16",
-    "react-test-renderer": "^19.2.5",
+    "react-test-renderer": "^18.3.1",
     "typescript": "~5.9.2"
   },
   "private": true
