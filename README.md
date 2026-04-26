@@ -4,17 +4,17 @@
   <a href="https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml">
     <img src="https://github.com/L02-hello-mobile/assignment-mobile/actions/workflows/test.yml/badge.svg" alt="CI Status">
   </a>
-  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=alert_status" alt="Quality Gate Status">
+  <a href="https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=alert_status" alt="Quality Gate Status">
   </a>
-  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=coverage" alt="Coverage">
+  <a href="https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=coverage" alt="Coverage">
   </a>
-  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=bugs" alt="Bugs">
+  <a href="https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=bugs" alt="Bugs">
   </a>
-  <a href="https://sonarcloud.io/summary/new_code?id=l02-hello-mobile_assignment-mobile">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=l02-hello-mobile_assignment-mobile&metric=vulnerabilities" alt="Vulnerabilities">
+  <a href="https://sonarcloud.io/summary/new_code?id=L02-hello-mobile_assignment-mobile">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=L02-hello-mobile_assignment-mobile&metric=vulnerabilities" alt="Vulnerabilities">
   </a>
 </p>
 
